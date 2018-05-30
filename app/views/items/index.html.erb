@@ -2,7 +2,7 @@
 <p class="alert alert-primary"><%= notice %></p>
 <% end %>
 <h1>Listing Items</h1>
-<table>
+<table class="table">
   <thead>
     <tr>
       <th></th>
@@ -13,7 +13,6 @@
       <th>Highest Bid</th>
     </tr>
   </thead>
-
   <tbody>
     <% @items.each do |item| %>
       <tr>
@@ -23,14 +22,22 @@
         <td><%= item.description %></td>
         <td><%= number_to_currency(item.starting_bid) %></td>
         <td><%= number_to_currency(item.highest_bid_amount) %></td>
-        <td><%= link_to 'Bid!', item, class: "btn btn-primary btn-sm" %></td>
+        <td><div id="form--bid"></div></td>
+        <td><%= link_to 'Bid!', item, remote:true, class: "btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Edit', edit_item_path(item), class: "btn btn-secondary btn-sm" %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
-      </tr>
+        
+        </tr>
+        
+
     <% end %>
   </tbody>
+  
 </table>
 
 <br>
 
 <%= link_to 'New Item', new_item_path, class: "btn btn-primary btn-small" %>
+
+
+
